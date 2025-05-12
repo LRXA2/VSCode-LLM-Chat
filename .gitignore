@@ -1,0 +1,10 @@
+out
+dist
+node_modules
+.vscode-test/
+*.vsix
+.ollama/blobs/**
+.ollama/manifests/registry.ollama.ai/library/**
+
+!.ollama/blobs/.gitkeep
+!.ollama/manifests/registry.ollama.ai/library/.gitkeep

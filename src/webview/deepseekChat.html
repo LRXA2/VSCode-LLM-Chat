@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{styleUri}}">
+    <!-- Load the marked library for markdown parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <!-- Configure MathJax BEFORE loading the library -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]'], ['\\begin{equation}', '\\end{equation}']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {'[+]': ['base', 'ams', 'cancel', 'color', 'newcommand']}
+        },
+        svg: {
+            fontCache: 'global'
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processHtmlClass: 'tex2jax_process',
+            ignoreHtmlClass: 'tex2jax_ignore'
+        },
+        startup: {
+            ready: () => {
+                console.log('MathJax is ready');
+                MathJax.startup.defaultReady();
+            }
+        }
+    };
+    </script>
+    <!-- Load MathJax for LaTeX rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>DeepSeek Chat</h2>
+        <div class="prompt-container">
+            <textarea id="prompt" placeholder="Ask something..."></textarea>
+        </div>
+        <div class="button-container">
+            <button id="askBtn">Ask DeepSeek</button>
+            <button id="stopBtn" style="display: none;">Stop</button>
+        </div>
+        <div class="status-indicator" id="status" style="display: none;">
+            <div class="loading-spinner"></div>
+            <span id="status-text">Processing...</span>
+        </div>
+        
+        <div class="question-container" id="question-container" style="display: none;">
+            <div class="question-header">Your Question:</div>
+            <div class="question-content" id="question-content"></div>
+        </div>
+        
+        <div class="response-container">
+            <div id="response"></div>
+        </div>
+    </div>
+
+    <script src="{{scriptUri}}"></script>
+</body>
+</html>
